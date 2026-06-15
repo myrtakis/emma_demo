@@ -1,0 +1,206 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(145deg, #f9fafc 0%, #f1f4f9 100%);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+  padding: 2rem 1.25rem 3rem;
+  color: #1a2c3e;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.75);
+  border-radius: 3rem;
+  padding: 1.75rem 1.5rem 2rem;
+  box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.description {
+  background: white;
+  padding: 1.2rem 1.25rem;
+  border-radius: 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 12px -8px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.02);
+}
+.description p {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #2c3f4f;
+  font-weight: 450;
+}
+
+/* Slider bars container */
+.selectors-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.slider-bar {
+  background: white;
+  border-radius: 2rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03), 0 0 0 1px rgba(148,163,184,0.1);
+}
+
+.slider-label {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.3px;
+  color: #1f4a7a;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  background: #eef2ff;
+  padding: 0.2rem 1rem;
+  border-radius: 2rem;
+}
+
+/* Custom range slider styling */
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  outline: none;
+  margin: 1rem 0 0.5rem;
+}
+
+.slider:focus {
+  outline: none;
+}
+
+/* thumb (the dot) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  background: #1a5d9c;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border: 2px solid white;
+  transition: 0.1s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #0f4a7a;
+}
+
+.slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: #1a5d9c;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+/* disabled slider (B, C, D) – greyed but still visible */
+.slider:disabled {
+  opacity: 0.7;
+  background: #eef2f5;
+}
+.slider:disabled::-webkit-slider-thumb {
+  background: #8aaec0;
+  cursor: default;
+  transform: none;
+}
+.slider:disabled::-moz-range-thumb {
+  background: #8aaec0;
+  cursor: default;
+}
+
+/* tick labels (1,2,3) */
+.slider-values {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+  margin-top: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #5a6e82;
+}
+
+/* radio group */
+.radio-section {
+  background: white;
+  border-radius: 2rem;
+  padding: 1rem 1.25rem;
+  margin: 1.75rem 0 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02), 0 0 0 1px #e9edf2;
+}
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+.radio-label input {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #bfd1e2;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.radio-label input:checked {
+  border-color: #1a5d9c;
+  background-color: #1a5d9c;
+  box-shadow: inset 0 0 0 3px white;
+}
+
+.image-stage {
+  margin-top: 1rem;
+  border-radius: 2rem;
+  background: #ffffffd9;
+  padding: 0.25rem;
+  box-shadow: 0 12px 22px -12px rgba(0,0,0,0.1);
+}
+.dynamic-image-container {
+  width: 100%;
+  background: #fefaf5;
+  border-radius: 1.8rem;
+  overflow: hidden;
+  min-height: 240px;
+}
+#dynamicImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1.6rem;
+}
+.caption-note {
+  text-align: center;
+  font-size: 0.7rem;
+  margin-top: 1rem;
+  color: #6c8aac;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1rem 0.9rem 2rem;
+  }
+  .container {
+    padding: 1.2rem 1rem;
+  }
+  .slider-bar {
+    padding: 0.9rem 1rem;
+  }
+}
