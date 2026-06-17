@@ -17,13 +17,36 @@ function updateBCD() {
   appState.b = b; appState.c = c; appState.d = d;
 }
 
+// ========== UI UPDATES ==========
 function updateSlidersUI() {
   document.getElementById('sliderA').value = appState.a;
   document.getElementById('sliderB').value = appState.b;
   document.getElementById('sliderC').value = appState.c;
   document.getElementById('sliderD').value = appState.d;
+  updateNumberHighlights();
 }
 
+function updateNumberHighlights() {
+  const bars = ['A', 'B', 'C', 'D'];
+  const values = {
+    A: appState.a,
+    B: appState.b,
+    C: appState.c,
+    D: appState.d
+  };
+  bars.forEach(id => {
+    const bar = document.querySelector(`.slider-bar[data-id="${id}"]`);
+    if (!bar) return;
+    const nums = bar.querySelectorAll('.slider-numbers .num');
+    const val = values[id];
+    nums.forEach(num => {
+      const numVal = parseInt(num.getAttribute('data-value'), 10);
+      num.classList.toggle('active', numVal === val);
+    });
+  });
+}
+
+// ========== ACTIONS ==========
 function setAValue(newVal) {
   if (newVal === appState.a) return;
   appState.a = newVal;
@@ -46,14 +69,12 @@ function updateImage() {
   img.alt = `${appState.color} - A=${appState.a}`;
 }
 
-// ========== EVENT BINDING (mobile‑friendly) ==========
+// ========== EVENT BINDING ==========
 function initSliderA() {
   const slider = document.getElementById('sliderA');
-  // Use 'input' for real-time, 'change' as fallback
   slider.addEventListener('input', (e) => {
     setAValue(parseInt(e.target.value, 10));
   });
-  // Also listen to 'change' for touch devices that may not fire input
   slider.addEventListener('change', (e) => {
     setAValue(parseInt(e.target.value, 10));
   });
@@ -61,19 +82,15 @@ function initSliderA() {
 
 function initDropdown() {
   const dropdown = document.getElementById('colorSelect');
-  // 'change' works on desktop, but on mobile sometimes only 'input' fires reliably
   dropdown.addEventListener('change', (e) => {
     setColor(e.target.value);
   });
-  // Add 'input' as a fallback for mobile Safari/Chrome
   dropdown.addEventListener('input', (e) => {
     setColor(e.target.value);
   });
-  // Also listen to 'blur' in case the value changes but event not triggered
   dropdown.addEventListener('blur', (e) => {
     setColor(e.target.value);
   });
-  // Ensure initial value is set
   dropdown.value = appState.color;
 }
 

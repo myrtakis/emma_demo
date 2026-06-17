@@ -25,112 +25,124 @@ body {
 
 .description {
   background: white;
-  padding: 0.5rem 0.8rem;
+  padding: 0.6rem 0.9rem;
   border-radius: 1.2rem;
   margin-bottom: 0.75rem;
   border: 1px solid rgba(0,0,0,0.02);
 }
 .description p {
-  font-size: 0.75rem;
-  line-height: 1.3;
+  font-size: 0.95rem;
+  line-height: 1.4;
   color: #2c3f4f;
 }
 
-/* Slider panel */
 .selectors-panel {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
   margin-bottom: 0.75rem;
 }
 
 .slider-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   background: white;
-  border-radius: 1.2rem;
-  padding: 0.3rem 0.7rem 0.2rem;
+  border-radius: 1.5rem;
+  padding: 0.5rem 0.9rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 0 0 1px rgba(148,163,184,0.06);
 }
 
-/* Header row: label + numbers */
-.slider-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.1rem;
-}
 .slider-label {
   font-weight: 700;
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: #1f4a7a;
   background: #eef2ff;
-  padding: 0.05rem 0.6rem;
-  border-radius: 1rem;
-  line-height: 1.5;
-}
-.slider-numbers {
-  display: flex;
-  gap: 0.4rem;
-  font-size: 0.6rem;
-  font-weight: 500;
-  color: #5a6e82;
-}
-.slider-numbers .num {
-  display: inline-block;
-  width: 1.2rem;
+  padding: 0.1rem 0.7rem;
+  border-radius: 1.5rem;
+  min-width: 2.2rem;
   text-align: center;
-  border-radius: 0.5rem;
-  transition: all 0.15s;
-}
-.slider-numbers .num.active {
-  background: #1a5d9c;
-  color: white;
-  font-weight: 600;
+  line-height: 1.6;
 }
 
-/* Slider track – thinner */
+.slider-track-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 3px;
+  height: 4px;
   background: #e2e8f0;
   border-radius: 4px;
   outline: none;
-  margin: 0.1rem 0 0.2rem;
+  margin: 0.35rem 0 0.2rem;
 }
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   background: #1a5d9c;
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid white;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: 0.1s;
 }
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.05);
+}
+
 .slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   background: #1a5d9c;
   border-radius: 50%;
   border: 2px solid white;
+  cursor: pointer;
 }
+
 .slider:disabled {
   opacity: 0.5;
 }
 .slider:disabled::-webkit-slider-thumb {
   background: #8aaec0;
   cursor: default;
+  transform: none;
 }
 .slider:disabled::-moz-range-thumb {
   background: #8aaec0;
   cursor: default;
 }
 
-/* Dropdown */
+.slider-numbers {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #5a6e82;
+}
+.slider-numbers .num {
+  display: inline-block;
+  text-align: center;
+  width: 1.6rem;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+/* No box/bg for active number – just subtle text style */
+.slider-numbers .num.active {
+  font-weight: 700;
+  color: #1a5d9c;
+}
+
 .dropdown-section {
   background: white;
   border-radius: 2rem;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 1rem;
   margin: 0.25rem 0 0.75rem;
   display: flex;
   align-items: center;
@@ -139,17 +151,17 @@ body {
 }
 .dropdown-label {
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: #1f4a7a;
 }
 .dropdown {
   flex: 1;
-  padding: 0.2rem 0.6rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 1.5rem;
   border: 1px solid #dde3ec;
   background: #f8fafc;
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   color: #1a2c3e;
   cursor: pointer;
   appearance: none;
@@ -163,7 +175,6 @@ body {
   border-color: #1a5d9c;
 }
 
-/* Image stage */
 .image-stage {
   margin-top: 0.25rem;
   border-radius: 1.5rem;
@@ -176,62 +187,69 @@ body {
   background: #fefaf5;
   border-radius: 1.5rem;
   overflow: hidden;
-  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 200px; /* limits size without cropping */
 }
 #dynamicImage {
   width: 100%;
   height: auto;
+  max-height: 200px;
   display: block;
   border-radius: 1.4rem;
+  object-fit: contain; /* scales proportionally, no crop */
 }
 .caption-note {
   text-align: center;
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   margin-top: 0.3rem;
   color: #6c8aac;
 }
 
-/* Mobile tweaks */
 @media (max-width: 480px) {
   body {
-    padding: 0.5rem 0.4rem 0.8rem;
+    padding: 0.4rem 0.3rem 0.6rem;
   }
   .container {
-    padding: 0.6rem 0.6rem 0.8rem;
+    padding: 0.5rem 0.5rem 0.7rem;
   }
   .slider-bar {
-    padding: 0.2rem 0.4rem;
+    padding: 0.4rem 0.5rem;
+    gap: 0.5rem;
   }
   .slider-label {
-    font-size: 0.6rem;
+    font-size: 0.85rem;
+    min-width: 1.8rem;
     padding: 0 0.4rem;
   }
   .slider-numbers {
-    font-size: 0.55rem;
-    gap: 0.2rem;
+    font-size: 0.75rem;
   }
   .slider-numbers .num {
-    width: 1rem;
-  }
-  .slider {
-    height: 2px;
+    width: 1.4rem;
   }
   .slider::-webkit-slider-thumb {
-    width: 14px;
-    height: 14px;
+    width: 22px;
+    height: 22px;
   }
   .slider::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
+    width: 22px;
+    height: 22px;
   }
   .dropdown-section {
     padding: 0.3rem 0.6rem;
   }
   .dropdown-label {
-    font-size: 0.65rem;
+    font-size: 0.85rem;
   }
   .dropdown {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.5rem;
+    font-size: 0.85rem;
+  }
+  .dynamic-image-container {
+    max-height: 150px;
+  }
+  #dynamicImage {
+    max-height: 150px;
   }
 }
