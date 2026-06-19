@@ -323,10 +323,6 @@ html, body {
   #loadingImg {
     max-height: 60vh;
   }
-  .section-header {
-    font-size: 1.2rem;
-    margin-bottom: 0.3rem;
-  }
   #app-screen {
     padding: 0.8rem 0.5rem 0.5rem;
   }
@@ -337,12 +333,12 @@ html, body {
     font-family: 'Montserrat';
     color: rgb(0, 95, 210);
     font-weight: bold;
-    font-size: 1.5rem;          /* Larger than other text */
+    font-size: 1.2rem;          /* Larger than other text */
     text-align: center;
     letter-spacing: 1px;
     flex-shrink: 0;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
   }
   .selectors-panel {
     margin-bottom: 0.6rem;
@@ -359,7 +355,7 @@ html, body {
   .slider-label-left,
   .slider-label-right {
     flex: 0 0 105px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-family: 'Montserrat';
   }
   .slider::-webkit-slider-thumb {
