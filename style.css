@@ -333,6 +333,17 @@ html, body {
   .app-container {
     gap: 0;
   }
+  .section-header {
+    font-family: 'Gotham';
+    color: rgb(0, 95, 210);
+    font-weight: bold;
+    font-size: 1.5rem;          /* Larger than other text */
+    text-align: center;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+  }
   .selectors-panel {
     margin-bottom: 0.6rem;
   }
@@ -348,7 +359,7 @@ html, body {
   .slider-label-left,
   .slider-label-right {
     flex: 0 0 105px;
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   .slider::-webkit-slider-thumb {
     width: 20px;
@@ -362,13 +373,13 @@ html, body {
     padding: 0.3rem 0.4rem;
   }
   .dropdown-label {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   .dropdown {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
   .dropdown option {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
   #dynamicImage {
     border-radius: 1rem;
