@@ -40,6 +40,15 @@ html, body {
   max-width: 600px;
 }
 
+#loadingImg {
+  width: 100%;
+  max-width: 500px;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 1.5rem;
+  /* Removed background and shadow – no white background */
+}
+
 #startBtn {
   font-family: 'Gotham', 'Inter', sans-serif;
   background: rgb(0, 95, 210);
@@ -48,7 +57,8 @@ html, body {
   font-size: 1.8rem;
   padding: 0.9rem 2.5rem;
   border: none;
-  border-radius: 4rem;
+  /* Normal edges – no border-radius */
+  border-radius: 0;
   box-shadow: 0 8px 30px rgba(0, 95, 210, 0.3);
   cursor: pointer;
   transition: all 0.25s ease;
@@ -63,16 +73,6 @@ html, body {
   transform: scale(0.95);
 }
 
-#loadingImg {
-  width: 100%;
-  max-width: 500px;
-  max-height: 50vh;
-  object-fit: contain;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  background: rgba(255,255,255,0.4);
-}
-
 /* ===== MAIN APP SCREEN ===== */
 #app-screen {
   position: fixed;
@@ -82,7 +82,7 @@ html, body {
   bottom: 0;
   display: flex;
   justify-content: center;
-  padding: 3rem 1rem 1rem;
+  padding: 1.5rem 1rem 1rem;
   background: linear-gradient(145deg, #f9fafc 0%, #f1f4f9 100%);
   height: 100dvh;
   overflow: hidden;
@@ -97,20 +97,33 @@ html, body {
   max-height: 100%;
 }
 
+/* ===== SECTION HEADERS ===== */
+.section-header {
+  font-family: 'Gotham', 'Inter', sans-serif;
+  color: rgb(0, 95, 210);
+  font-weight: 600;
+  font-size: 1.5rem;          /* Larger than other text */
+  text-align: center;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+}
+
 /* ===== SPACING ADJUSTMENTS ===== */
 .selectors-panel {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
   flex-shrink: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.8rem;       /* Reduced because header handles spacing */
 }
 
 .dropdowns-container {
   display: flex;
   gap: 0.8rem;
   flex-shrink: 0;
-  margin-bottom: 0rem;
+  margin-bottom: 0.1rem;
 }
 
 /* ===== SELECTOR BARS – FIXED WIDTH, NO ELLIPSIS ===== */
@@ -126,24 +139,16 @@ html, body {
 
 .slider-label-left,
 .slider-label-right {
-  flex: 0 0 150px;              /* Fixed width – large enough for all labels */
+  flex: 0 0 150px;
   font-family: 'Gotham', 'Inter', sans-serif;
   color: rgb(0, 95, 210);
   font-weight: 600;
   font-size: 1rem;
   white-space: nowrap;
-  /* Removed overflow:hidden and text-overflow:ellipsis – show full text */
 }
 
-/* Left label: right‑aligned */
-.slider-label-left {
-  text-align: right;
-}
-
-/* Right label: left‑aligned */
-.slider-label-right {
-  text-align: left;
-}
+.slider-label-left { text-align: right; }
+.slider-label-right { text-align: left; }
 
 .slider-track-group {
   flex: 1;
@@ -202,7 +207,7 @@ html, body {
 
 /* ===== DROPDOWNS ===== */
 .dropdown-group {
-  flex: 0.75;
+  flex: 1;
   background: white;
   border-radius: 1.5rem;
   padding: 0.4rem 0.6rem;
@@ -252,6 +257,7 @@ html, body {
   padding: 0;
   box-shadow: none;
 }
+
 .dynamic-image-container {
   width: 100%;
   flex: 1;
@@ -260,9 +266,32 @@ html, body {
   border-radius: 0;
   overflow: hidden;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  position: relative;
 }
+
+/* ===== LOADING SPINNER ===== */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid rgb(0, 95, 210);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 10;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 #dynamicImage {
   width: 100%;
   height: 100%;
@@ -271,6 +300,7 @@ html, body {
   border-radius: 1.4rem;
   object-fit: contain;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: opacity 0.3s ease;
 }
 
 .caption-note {
@@ -291,21 +321,20 @@ html, body {
     padding: 0.7rem 1.8rem;
   }
   #loadingImg {
-    max-height: 40vh;
+    max-height: 60vh;
   }
-  
+  .section-header {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
   #app-screen {
-  padding-top: calc(env(safe-area-inset-top) + 2rem);
-  padding-right: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
+    padding: 0.8rem 0.5rem 0.5rem;
   }
-
   .app-container {
     gap: 0;
   }
   .selectors-panel {
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
   }
   .dropdowns-container {
     flex-direction: column;
@@ -318,7 +347,7 @@ html, body {
   }
   .slider-label-left,
   .slider-label-right {
-    flex: 0 0 105px;            /* Still enough for mobile – no ellipsis */
+    flex: 0 0 105px;
     font-size: 0.8rem;
   }
   .slider::-webkit-slider-thumb {
@@ -343,9 +372,6 @@ html, body {
   }
   #dynamicImage {
     border-radius: 1rem;
-  }
-  .dynamic-image-container {
-    align-items: flex-start;
   }
   .caption-note {
     font-size: 0.65rem;

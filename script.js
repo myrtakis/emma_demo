@@ -4,6 +4,7 @@ const slider2 = document.getElementById('slider2');
 const marbleSelect = document.getElementById('marbleSelect');
 const terrazzoSelect = document.getElementById('terrazzoSelect');
 const dynamicImage = document.getElementById('dynamicImage');
+const spinner = document.getElementById('spinner');
 const startBtn = document.getElementById('startBtn');
 const welcomeScreen = document.getElementById('welcome-screen');
 const appScreen = document.getElementById('app-screen');
@@ -12,6 +13,17 @@ const appScreen = document.getElementById('app-screen');
 let currentSliderVal = 1;
 let currentMarbleVal = null;
 let currentTerrazzoVal = null;
+
+// ========== SPINNER CONTROLS ==========
+function showSpinner() {
+  spinner.style.display = 'block';
+  dynamicImage.style.opacity = '0.5';
+}
+
+function hideSpinner() {
+  spinner.style.display = 'none';
+  dynamicImage.style.opacity = '1';
+}
 
 // ========== WELCOME SCREEN LOGIC ==========
 startBtn.addEventListener('click', () => {
@@ -27,15 +39,30 @@ function updateSlider2(val) {
 }
 
 function updateImage() {
+  // Show loading spinner
+  showSpinner();
+
   let filename = `${currentSliderVal}.jpg`;
   if (currentMarbleVal !== null) {
     filename = `${currentSliderVal}_M${currentMarbleVal}.jpg`;
   } else if (currentTerrazzoVal !== null) {
     filename = `${currentSliderVal}_T${currentTerrazzoVal}.jpg`;
   }
+
+  // Trigger image load
   dynamicImage.src = `assets/${filename}`;
   dynamicImage.alt = `Material: ${filename}`;
 }
+
+// ===== IMAGE LOAD / ERROR HANDLING =====
+dynamicImage.onload = function() {
+  hideSpinner();
+};
+
+dynamicImage.onerror = function() {
+  hideSpinner();
+  // Inline onerror in HTML will handle the fallback image
+};
 
 // ========== EVENT LISTENERS ==========
 slider1.addEventListener('input', (e) => {

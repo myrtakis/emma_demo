@@ -12,14 +12,17 @@
   <!-- ===== WELCOME SCREEN ===== -->
   <div id="welcome-screen">
     <div class="welcome-content">
-      <button id="startBtn">Build your own panel</button>
       <img src="assets/loading_img.jpeg" alt="Loading preview" id="loadingImg">
+      <button id="startBtn">Build your own panel</button>
     </div>
   </div>
 
   <!-- ===== MAIN APP SCREEN ===== -->
   <div id="app-screen" style="display: none;">
     <div class="app-container">
+
+      <!-- Header: Tune the performance -->
+      <div class="section-header">Tune the performance</div>
 
       <!-- Slider Panel -->
       <div class="selectors-panel">
@@ -39,14 +42,17 @@
         </div>
       </div>
 
+      <!-- Header: Define its character -->
+      <div class="section-header">Define its character</div>
+
       <!-- Dropdown Panel -->
       <div class="dropdowns-container">
         <div class="dropdown-group">
           <label for="marbleSelect" class="dropdown-label">marble-like pattern</label>
           <select id="marbleSelect" class="dropdown">
             <option value="">Select</option>
-            <option value="1">1- white</option>
-            <option value="2">2- white/ black dots</option>
+            <option value="1">1- white/ black dots</option>
+            <option value="2">2- white</option>
             <option value="3">3- pale pink</option>
             <option value="4">4- pale green</option>
             <option value="5">5- green</option>
@@ -72,6 +78,7 @@
       <!-- Image Stage -->
       <div class="image-stage">
         <div class="dynamic-image-container">
+          <div class="spinner" id="spinner"></div>
           <img id="dynamicImage" alt="Material visualisation" src="assets/1.jpg" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22200%22 viewBox=%220 0 400 200%22%3E%3Crect width=%22400%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 fill=%22%23999%22 font-size=%2214%22%3ENot found%3C/text%3E%3C/svg%3E'">
         </div>
       </div>
