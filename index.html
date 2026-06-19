@@ -2,83 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Horizon | Compact Sliders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>Horizon | Material Selector</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-  <!-- Description -->
-  <div class="description">
-    <p>✨ Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
-  </div>
 
-  <!-- Slider bars with inline numbers spanning the track -->
-  <div class="selectors-panel">
-    <div class="slider-bar" data-id="A">
-      <span class="slider-label">Thermal</span>
-      <div class="slider-track-group">
-        <input type="range" min="1" max="3" step="1" value="1" class="slider" id="sliderA">
-        <div class="slider-numbers">
-          <span class="num" data-value="1">1</span>
-          <span class="num" data-value="2">2</span>
-          <span class="num" data-value="3">3</span>
-        </div>
-      </div>
-    </div>
-    <div class="slider-bar" data-id="B">
-      <span class="slider-label">Weight</span>
-      <div class="slider-track-group">
-        <input type="range" min="1" max="3" step="1" value="1" class="slider" id="sliderB" disabled>
-        <div class="slider-numbers">
-          <span class="num" data-value="1">1</span>
-          <span class="num" data-value="2">2</span>
-          <span class="num" data-value="3">3</span>
-        </div>
-      </div>
-    </div>
-    <div class="slider-bar" data-id="C">
-      <span class="slider-label">Opaque</span>
-      <div class="slider-track-group">
-        <input type="range" min="1" max="3" step="1" value="1" class="slider" id="sliderC" disabled>
-        <div class="slider-numbers">
-          <span class="num" data-value="1">1</span>
-          <span class="num" data-value="2">2</span>
-          <span class="num" data-value="3">3</span>
-        </div>
-      </div>
-    </div>
-    <div class="slider-bar" data-id="D">
-      <span class="slider-label">Brittle</span>
-      <div class="slider-track-group">
-        <input type="range" min="1" max="3" step="1" value="1" class="slider" id="sliderD" disabled>
-        <div class="slider-numbers">
-          <span class="num" data-value="1">1</span>
-          <span class="num" data-value="2">2</span>
-          <span class="num" data-value="3">3</span>
-        </div>
-      </div>
+  <!-- ===== WELCOME SCREEN ===== -->
+  <div id="welcome-screen">
+    <div class="welcome-content">
+      <button id="startBtn">Build your own panel</button>
+      <img src="assets/loading_img.jpeg" alt="Loading preview" id="loadingImg">
     </div>
   </div>
 
-  <!-- Dropdown -->
-  <div class="dropdown-section">
-    <label for="colorSelect" class="dropdown-label">Color</label>
-    <select id="colorSelect" class="dropdown">
-      <option value="M1">Red</option>
-      <option value="M2">Green</option>
-    </select>
-  </div>
+  <!-- ===== MAIN APP SCREEN ===== -->
+  <div id="app-screen" style="display: none;">
+    <div class="app-container">
 
-  <!-- Image area -->
-  <div class="image-stage">
-    <div class="dynamic-image-container">
-      <img id="dynamicImage" alt="Visual" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23eef2ff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' fill='%23365c7a' font-size='14'%3Eloading%3C/text%3E%3C/svg%3E">
+      <!-- Slider Panel -->
+      <div class="selectors-panel">
+        <div class="slider-bar">
+          <span class="slider-label-left">thermally weak</span>
+          <div class="slider-track-group">
+            <input type="range" min="1" max="3" step="1" value="1" class="slider black-slider" id="slider1">
+          </div>
+          <span class="slider-label-right">thermally efficient</span>
+        </div>
+        <div class="slider-bar">
+          <span class="slider-label-left">opaque</span>
+          <div class="slider-track-group">
+            <input type="range" min="1" max="3" step="1" value="3" class="slider black-slider" id="slider2" disabled>
+          </div>
+          <span class="slider-label-right">translucent</span>
+        </div>
+      </div>
+
+      <!-- Dropdown Panel -->
+      <div class="dropdowns-container">
+        <div class="dropdown-group">
+          <label for="marbleSelect" class="dropdown-label">marble-like pattern</label>
+          <select id="marbleSelect" class="dropdown">
+            <option value="">Select</option>
+            <option value="1">1- white/ black dots</option>
+            <option value="2">2- white</option>
+            <option value="3">3- pale pink</option>
+            <option value="4">4- pale green</option>
+            <option value="5">5- green</option>
+            <option value="6">6- light blue</option>
+            <option value="7">7- yellow-brown</option>
+          </select>
+        </div>
+        <div class="dropdown-group">
+          <label for="terrazzoSelect" class="dropdown-label">terrazzo-like pattern</label>
+          <select id="terrazzoSelect" class="dropdown">
+            <option value="">Select</option>
+            <option value="1">1- white/ blue</option>
+            <option value="2">2- light grey</option>
+            <option value="3">3- pale pink/ white</option>
+            <option value="4">4- pale green</option>
+            <option value="5">5- green</option>
+            <option value="6">6- light blue</option>
+            <option value="7">7- white/ brown</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Image Stage -->
+      <div class="image-stage">
+        <div class="dynamic-image-container">
+          <img id="dynamicImage" alt="Material visualisation" src="assets/1.jpg" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22200%22 viewBox=%220 0 400 200%22%3E%3Crect width=%22400%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 fill=%22%23999%22 font-size=%2214%22%3ENot found%3C/text%3E%3C/svg%3E'">
+        </div>
+      </div>
+
     </div>
-    <div class="caption-note">✨ six moods · Color × A ✨</div>
   </div>
-</div>
 
 <script src="script.js"></script>
 </body>

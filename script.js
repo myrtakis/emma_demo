@@ -1,107 +1,86 @@
-// ========== IMAGE MAPPING ==========
-function getImageForCombination(color, aValue) {
-  const prefix = color === "M1" ? "r" : "g";
-  return `assets/${prefix}${aValue}.png`;
-}
+// ========== DOM REFS ==========
+const slider1 = document.getElementById('slider1');
+const slider2 = document.getElementById('slider2');
+const marbleSelect = document.getElementById('marbleSelect');
+const terrazzoSelect = document.getElementById('terrazzoSelect');
+const dynamicImage = document.getElementById('dynamicImage');
+const startBtn = document.getElementById('startBtn');
+const welcomeScreen = document.getElementById('welcome-screen');
+const appScreen = document.getElementById('app-screen');
 
 // ========== STATE ==========
-let appState = { a: 1, b: 1, c: 1, d: 1, color: "M1" };
+let currentSliderVal = 1;
+let currentMarbleVal = null;
+let currentTerrazzoVal = null;
 
-function computeBCDfromA(aVal) {
-  if (aVal === 1) return { b: 1, c: 1, d: 1 };
-  if (aVal === 2) return { b: 2, c: 1, d: 2 };
-  return { b: 3, c: 2, d: 3 };
-}
-function updateBCD() {
-  const { b, c, d } = computeBCDfromA(appState.a);
-  appState.b = b; appState.c = c; appState.d = d;
-}
+// ========== WELCOME SCREEN LOGIC ==========
+startBtn.addEventListener('click', () => {
+  welcomeScreen.style.display = 'none';
+  appScreen.style.display = 'flex';
+  window.dispatchEvent(new Event('resize'));
+});
 
-// ========== UI UPDATES ==========
-function updateSlidersUI() {
-  document.getElementById('sliderA').value = appState.a;
-  document.getElementById('sliderB').value = appState.b;
-  document.getElementById('sliderC').value = appState.c;
-  document.getElementById('sliderD').value = appState.d;
-  updateNumberHighlights();
-}
-
-function updateNumberHighlights() {
-  const bars = ['A', 'B', 'C', 'D'];
-  const values = {
-    A: appState.a,
-    B: appState.b,
-    C: appState.c,
-    D: appState.d
-  };
-  bars.forEach(id => {
-    const bar = document.querySelector(`.slider-bar[data-id="${id}"]`);
-    if (!bar) return;
-    const nums = bar.querySelectorAll('.slider-numbers .num');
-    const val = values[id];
-    nums.forEach(num => {
-      const numVal = parseInt(num.getAttribute('data-value'), 10);
-      num.classList.toggle('active', numVal === val);
-    });
-  });
-}
-
-// ========== ACTIONS ==========
-function setAValue(newVal) {
-  if (newVal === appState.a) return;
-  appState.a = newVal;
-  updateBCD();
-  updateSlidersUI();
-  updateImage();
-}
-
-function setColor(value) {
-  if (value === appState.color) return;
-  appState.color = value;
-  document.getElementById('colorSelect').value = value;
-  updateImage();
+// ========== UPDATE FUNCTIONS ==========
+function updateSlider2(val) {
+  const newVal = 4 - val;
+  slider2.value = newVal;
 }
 
 function updateImage() {
-  const img = document.getElementById('dynamicImage');
-  if (!img) return;
-  img.src = getImageForCombination(appState.color, appState.a);
-  img.alt = `${appState.color} - A=${appState.a}`;
+  let filename = `${currentSliderVal}.jpg`;
+  if (currentMarbleVal !== null) {
+    filename = `${currentSliderVal}_M${currentMarbleVal}.jpg`;
+  } else if (currentTerrazzoVal !== null) {
+    filename = `${currentSliderVal}_T${currentTerrazzoVal}.jpg`;
+  }
+  dynamicImage.src = `assets/${filename}`;
+  dynamicImage.alt = `Material: ${filename}`;
 }
 
-// ========== EVENT BINDING ==========
-function initSliderA() {
-  const slider = document.getElementById('sliderA');
-  slider.addEventListener('input', (e) => {
-    setAValue(parseInt(e.target.value, 10));
-  });
-  slider.addEventListener('change', (e) => {
-    setAValue(parseInt(e.target.value, 10));
-  });
-}
+// ========== EVENT LISTENERS ==========
+slider1.addEventListener('input', (e) => {
+  const val = parseInt(e.target.value, 10);
+  currentSliderVal = val;
+  updateSlider2(val);
+  updateImage();
+});
+slider1.addEventListener('change', (e) => {
+  const val = parseInt(e.target.value, 10);
+  currentSliderVal = val;
+  updateSlider2(val);
+  updateImage();
+});
 
-function initDropdown() {
-  const dropdown = document.getElementById('colorSelect');
-  dropdown.addEventListener('change', (e) => {
-    setColor(e.target.value);
-  });
-  dropdown.addEventListener('input', (e) => {
-    setColor(e.target.value);
-  });
-  dropdown.addEventListener('blur', (e) => {
-    setColor(e.target.value);
-  });
-  dropdown.value = appState.color;
-}
+marbleSelect.addEventListener('change', (e) => {
+  const val = e.target.value;
+  if (val) {
+    terrazzoSelect.value = '';
+    currentTerrazzoVal = null;
+    currentMarbleVal = parseInt(val, 10);
+  } else {
+    currentMarbleVal = null;
+  }
+  updateImage();
+});
+
+terrazzoSelect.addEventListener('change', (e) => {
+  const val = e.target.value;
+  if (val) {
+    marbleSelect.value = '';
+    currentMarbleVal = null;
+    currentTerrazzoVal = parseInt(val, 10);
+  } else {
+    currentTerrazzoVal = null;
+  }
+  updateImage();
+});
 
 // ========== INIT ==========
 function init() {
-  appState.a = 1;
-  updateBCD();
-  updateSlidersUI();
-  initSliderA();
-  initDropdown();
-  updateImage();
+  slider1.value = 1;
+  currentSliderVal = 1;
+  updateSlider2(1);
+  dynamicImage.src = 'assets/1.jpg';
 }
 
 init();
