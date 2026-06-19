@@ -50,7 +50,7 @@ html, body {
 }
 
 #startBtn {
-  font-family: 'Gotham';
+  font-family: 'Montserrat';
   background: rgb(0, 95, 210);
   color: white;
   font-weight: 600;
@@ -99,7 +99,7 @@ html, body {
 
 /* ===== SECTION HEADERS ===== */
 .section-header {
-  font-family: 'Gotham';
+  font-family: 'Montserrat';
   color: rgb(0, 95, 210);
   font-weight: bold;
   font-size: 1.5rem;          /* Larger than other text */
@@ -140,7 +140,7 @@ html, body {
 .slider-label-left,
 .slider-label-right {
   flex: 0 0 150px;
-  font-family: 'Gotham';
+  font-family: 'Montserrat';
   color: rgb(0, 95, 210);
   font-weight: 600;
   font-size: 1rem;
@@ -215,7 +215,7 @@ html, body {
 }
 .dropdown-label {
   display: block;
-  font-family: 'Gotham';
+  font-family: 'Montserrat';
   color: rgb(0, 95, 210);
   font-weight: 600;
   font-size: 0.85rem;
@@ -334,7 +334,7 @@ html, body {
     gap: 0;
   }
   .section-header {
-    font-family: 'Gotham';
+    font-family: 'Montserrat';
     color: rgb(0, 95, 210);
     font-weight: bold;
     font-size: 1.5rem;          /* Larger than other text */
