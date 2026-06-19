@@ -260,7 +260,7 @@ html, body {
   border-radius: 0;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 #dynamicImage {
@@ -295,8 +295,12 @@ html, body {
   }
   
   #app-screen {
-    padding: 0.8rem 0.5rem 0.5rem;
+  padding-top: calc(env(safe-area-inset-top) + 2rem);
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
   }
+
   .app-container {
     gap: 0;
   }
@@ -339,6 +343,9 @@ html, body {
   }
   #dynamicImage {
     border-radius: 1rem;
+  }
+  .dynamic-image-container {
+    align-items: flex-start;
   }
   .caption-note {
     font-size: 0.65rem;
