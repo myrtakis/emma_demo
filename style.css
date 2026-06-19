@@ -8,7 +8,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
   background: linear-gradient(145deg, #f9fafc 0%, #f1f4f9 100%);
   color: #1a2c3e;
   overflow: hidden;
@@ -360,6 +360,7 @@ html, body {
   .slider-label-right {
     flex: 0 0 105px;
     font-size: 1rem;
+    font-family: 'Montserrat';
   }
   .slider::-webkit-slider-thumb {
     width: 20px;
