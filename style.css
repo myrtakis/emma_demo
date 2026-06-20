@@ -25,73 +25,69 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: transparent;
+  background: linear-gradient(145deg, #f9fafc 0%, #f1f4f9 100%);
   z-index: 10;
-  padding: 2rem;
+  padding: 0;
   height: 100dvh;
+  overflow: hidden;
 }
 
-/* After */
 .welcome-content {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;  /* New */
+  justify-content: center;
   width: 100%;
-  max-width: 700px;         /* Increased from 600px */
-  height: 100%;             /* New */
-  max-height: 100%;         /* New */
+  height: 100%;
 }
 
 .image-wrapper {
   position: relative;
   width: 100%;
-  height: 94dvh;
-  max-height: 94dvh;
-  border-radius: 0rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.07);
-  background: none;
 }
 
 #loadingImg {
   width: 100%;
-  height: 100%;           /* New - fills wrapper */
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   display: block;
   object-fit: contain;
-  border-radius: 0;       /* Removed border radius */
-  max-width: none;        /* New - removes size limits */
-  max-height: none;       /* New - removes size limits */
 }
 
 #startBtn {
-  position: absolute;      /* New - positions inside image */
-  bottom: 2%;             /* New - 5% from bottom */
-  left: 50%;              /* New - centers horizontally */
-  transform: translateX(-50%); /* New - centers perfectly */
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'Gotham', 'Inter', sans-serif;
   background: rgb(0, 95, 210);
   color: white;
   font-weight: 600;
-  font-size: 1.7rem;      /* Slightly reduced */
-  padding: 0.85rem 2.4rem; /* Slightly reduced */
+  font-size: 1.7rem;
+  padding: 0.85rem 2.4rem;
   border: none;
-  border-radius: 0rem;
+  border-radius: 4rem;
   box-shadow: 0 8px 30px rgba(0, 95, 210, 0.35);
   cursor: pointer;
   transition: all 0.25s ease;
   letter-spacing: 0.5px;
   width: fit-content;
-  white-space: nowrap;    /* New - prevents wrapping */
-  z-index: 2;             /* New - ensures visibility */
+  white-space: nowrap;
+  z-index: 2;
 }
 
 #startBtn:hover {
-  transform: translateX(-50%) scale(1.05); /* Keeps centered while scaling */
+  transform: translateX(-50%) scale(1.05);
 }
 
 #startBtn:active {
-  transform: translateX(-50%) scale(0.95); /* Keeps centered while scaling */
+  transform: translateX(-50%) scale(0.95);
 }
 
 /* ===== MAIN APP SCREEN ===== */
@@ -123,7 +119,7 @@ html, body {
   font-family: 'Montserrat';
   color: rgb(0, 95, 210);
   font-weight: bold;
-  font-size: 1.5rem;          /* Larger than other text */
+  font-size: 1.5rem;
   text-align: center;
   letter-spacing: 1px;
   flex-shrink: 0;
@@ -137,7 +133,7 @@ html, body {
   flex-direction: column;
   gap: 0.8rem;
   flex-shrink: 0;
-  margin-bottom: 0.8rem;       /* Reduced because header handles spacing */
+  margin-bottom: 0.8rem;
 }
 
 .dropdowns-container {
@@ -334,27 +330,12 @@ html, body {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
-  #welcome-screen {
-    padding: 0.6rem;
-  }
-  .image-wrapper {
-    height: 85dvh;        /* ← Reduced from 92dvh */
-    max-height: 85dvh;    /* ← Reduced from 92dvh */
-    min-height: 350px;    /* ← Add minimum height */
-    border-radius: 1.2rem;
-    overflow: visible;    /* ← Changed from 'hidden' */
-  }
-
   #startBtn {
     font-size: 1.15rem;
     padding: 0.6rem 1.4rem;
-    bottom: 31%;           /* ← Keep this */
-    white-space: nowrap;
-    z-index: 20;          /* ← Increase z-index to ensure visibility */
+    bottom: 0.6rem;
   }
-  #loadingImg {
-    max-height: 60vh;
-  }
+
   #app-screen {
     padding: 0.8rem 0.5rem 0.5rem;
   }
@@ -362,13 +343,7 @@ html, body {
     gap: 0;
   }
   .section-header {
-    font-family: 'Montserrat';
-    color: rgb(0, 95, 210);
-    font-weight: bold;
-    font-size: 1.2rem;          /* Larger than other text */
-    text-align: center;
-    letter-spacing: 1px;
-    flex-shrink: 0;
+    font-size: 1.2rem;
     margin-bottom: 1.2rem;
     margin-top: 1.2rem;
   }
