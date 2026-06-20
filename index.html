@@ -91,6 +91,22 @@
     </div>
   </div>
 
+  <!-- Sync the welcome image wrapper to the image's real aspect ratio,
+       so the button sits at the image's bottom edge, not the screen's. -->
+  <script>
+    (function () {
+      const img = document.getElementById('loadingImg');
+      const wrapper = document.querySelector('.image-wrapper');
+      function syncRatio() {
+        if (img.naturalWidth && img.naturalHeight) {
+          wrapper.style.aspectRatio = img.naturalWidth + ' / ' + img.naturalHeight;
+        }
+      }
+      if (img.complete) syncRatio();
+      else img.addEventListener('load', syncRatio);
+    })();
+  </script>
+
 <script src="script.js"></script>
 </body>
 </html>
