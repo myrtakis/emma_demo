@@ -63,7 +63,7 @@ html, body {
 
 #startBtn {
   position: absolute;
-  bottom: 1rem;
+  bottom: 3.3rem;
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Gotham', 'Inter', sans-serif;
@@ -81,6 +81,37 @@ html, body {
   width: fit-content;
   white-space: nowrap;
   z-index: 2;
+}
+
+.developer-credit {
+  position: absolute;
+  left: 50%;
+  bottom: 0.6rem;      /* same region as the button */
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: rgba(240,240,240,0.85);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+  z-index: 2;
+  pointer-events: none;
+  width: 100%;
+}
+
+.developer-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.developer-email a {
+  color: inherit;          /* Same gray color as the text */
+  text-decoration: none;   /* No underline */
+  transition: opacity 0.2s ease;
+  pointer-events: auto;    /* Make sure it's clickable */
+}
+
+.developer-email a:hover {
+  opacity: 0.75;
+  text-decoration: underline;
 }
 
 #startBtn:hover {
