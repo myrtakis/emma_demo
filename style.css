@@ -365,7 +365,20 @@ html, body {
   #startBtn {
     font-size: 1.15rem;
     padding: 0.6rem 1.4rem;
-    bottom: 0.6rem;
+    bottom: 3rem;
+  }
+
+  .developer-credit {
+    bottom: 0.8rem;   /* Keep credits near the bottom */
+    line-height: 1.3;
+  }
+
+  .developer-name {
+    font-size: 0.8rem;
+  }
+
+  .developer-email {
+    font-size: 0.62rem;
   }
 
   #app-screen {
